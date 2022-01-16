@@ -1,6 +1,6 @@
 #include "lab2_common.h"
 
-  int
+int
 main(int argc, char ** argv)
 {
   if (argc < 2) {
@@ -35,22 +35,19 @@ main(int argc, char ** argv)
       clock_t dt = clock() - t0;
       cout << "progress: " << j+1 << "/" << nfill << " time elapsed: " << dt * 1.0e-6 << endl << std::flush;
       p1 += (nfill / 40);
-
     }
   }
   clock_t dt = clock() - t0;
   cout << "time elapsed: " << dt * 1.0e-6 << " seconds" << endl;
-  	clock_t t1 = clock();
-  	for (size_t k = 0; k < 100000; k++) {
-
-                string testingkey = std::to_string(((size_t)rand())*((size_t)rand()));
-                string testingvalue = "Abhishek";
-                leveldb_set(db,testingkey,testingvalue);
-                leveldb_get(db,testingkey,testingvalue);
-        }
-        clock_t dt1 = clock() - t1;
-        cout << "set and read time elapsed: " << dt1 * 1.0e-6 << endl;
-
+  clock_t t1 = clock();
+  for (size_t k = 0; k < 100000; k++) {
+    string testingkey = std::to_string(((size_t)rand())*((size_t)rand()));
+    string testingvalue = "Abhishek";
+    leveldb_set(db, testingkey, testingvalue);
+    leveldb_get(db, testingkey, testingvalue);
+  }
+  clock_t dt1 = clock() - t1;
+  cout << "set and read time elapsed: " << dt1 * 1.0e-6 << endl;
 
   delete db;
   //clock_t dt = clock() - t0;

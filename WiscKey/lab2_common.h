@@ -26,12 +26,13 @@ using leveldb::WriteBatch;
 using leveldb::WriteOptions;
 using leveldb::DB;
 
-  static bool
+
+static bool
 leveldb_get(DB * db, string &key, string &value)
 {
   assert(lldb);
   ReadOptions ropt;
-  Status s = db->Get(ropt, key, &value);
+  Status s = db -> Get(ropt, key, &value);
   assert(s.ok());
   if (s.IsNotFound()) {
     return false;
@@ -40,34 +41,38 @@ leveldb_get(DB * db, string &key, string &value)
   }
 }
 
-  static void
+
+static void
 leveldb_set(DB * db, string &key, string &value)
 {
   WriteBatch wb;
   Status s;
   WriteOptions wopt;
   wb.Put(key, value);
-  s = db->Write(wopt, &wb);
+  s = db -> Write(wopt, &wb);
   assert(s.ok());
 }
 
-  static void
+
+static void
 leveldb_del(DB * db, string &key)
 {
   WriteOptions wopt;
   Status s;
-  s = db->Delete(wopt, key);
+  s = db -> Delete(wopt, key);
   assert(s.ok());
 }
 
-  static void
+
+static void
 destroy_leveldb(const string &dirname)
 {
   Options options;
   leveldb::DestroyDB(dirname, options);
 }
 
-  static DB *
+
+static DB *
 open_leveldb(const string &dirname)
 {
   Options options;
