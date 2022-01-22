@@ -160,7 +160,7 @@ int main(int argc, char ** argv)
     vbuf[i] = rand();
   }
   string value = string(vbuf, value_size);
- 	size_t nfill = 1000000000 / (value_size + 8);
+	size_t nfill = 1000000000 / (value_size + 8);
   clock_t t0 = clock();
   size_t p1 = nfill / 40;
   for (size_t j = 0; j < nfill; j++) {
